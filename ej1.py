@@ -1,8 +1,19 @@
+"""
+Introducir nombres (min 5) y que se guarden en una lista para luego tener que adivinar el nombre
+3 intentos
+"""
+
 import random
 
 lista = []
 
-for i in range(5):
+cantidad = int(input("Introduce cuantos nombres quieres meter (mínimo 5) -> "))
+
+while cantidad < 5:
+    print("Introduce al menos 5")
+    cantidad = int(input("Introduce cuantos nombres quieres meter (mínimo 5) -> "))
+
+for i in range(cantidad):
     nombre = input(f"Introduce el nombre {i + 1}º: ")
     lista.append(nombre)
 

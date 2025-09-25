@@ -1,8 +1,9 @@
-# for i in range(1,10,2): saltos de 2 en 2 hasta llegar a 10 desde 1
-
-#Calculadora con bucle
-#Suma,resta,mul,div
-#Salga si el usuario pide salir
+"""
+for i in range(1,10,2): saltos de 2 en 2 hasta llegar a 10 desde 1
+Calculadora con bucle
+Suma,resta,mul,div
+Salga si el usuario pide salir
+"""
 
 userInput = int(input("Introduce la operación \n1. suma\n2. resta\n3. multiplicación\n4. división\n"))
 

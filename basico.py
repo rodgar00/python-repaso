@@ -1,5 +1,6 @@
-#Pasar de minutos a horas y resto (mins)
-
+"""
+Pasar de minutos a horas y resto (mins)
+"""
 
 minutos = int(input("Introduce los minutos -> "))
 
