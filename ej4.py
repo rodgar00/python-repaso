@@ -11,48 +11,6 @@ Peso Colombiano - 4.562,79
 Peso Uruguayo - 46,602
 Real Brasileño - 6,2661
 Sol Peruano - PEN - 4,0908
-
-5. Programa un juego de búsqueda de un tesoro. Contaremos con una matriz de 4x5, tendremos un tesoro y una mina. El juego termina cuando
-pisas la mina (pierdes) o cuando encuentras el tesoro (ganas). El menú de juego tendrá el siguiente aspecto:
-
-¡Busca el tesoro!
-3|
-2|
-1|
-0|
-  ----------
-   0 1 2 3 4
-
-Coordenada x: (input del usuario, p.e. 3)
-Coordenada y: (input, p.e. 1)
-
-3|
-2|
-1|       X
-0|
-  ----------
-   0 1 2 3 4
-
-Coordenada x: (input del usuario, p.e. 2)
-Coordenada y: (input, p.e. 0)
-
-3|
-2|
-1|       X
-0| X
-  ----------
-   0 1 2 3 4
-
-Coordenada x: (input del usuario, p.e. 2)
-Coordenada y: (input, p.e. 2)
-
-¡Enhorabuena, has encontrado el tesoro!
-3|
-2|     €
-1|       X
-0| X   *        <-- Aquí estaba la mina. Programar también cuando pierdes.
-  ----------
-   0 1 2 3 4
+"""
 
 
-6. Ahora, mejora el juego y avisa al usuario cuando marque si tiene una mina a una casilla de distancia. """
