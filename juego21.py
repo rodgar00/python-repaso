@@ -19,8 +19,8 @@ valor = {
     6: 6,
     7: 7,
     8: 10,
-    9: 10,   # Caballo
-    10: 10   # Rey
+    9: 10,
+    10: 10
 }
 
 
@@ -57,7 +57,7 @@ def repartirCartas():
 
     print(f"Carta crupier: {carta_crupier} (valor: {valor_crupier})")
     print(f"Carta jugador: {carta_jugador} (valor: {valor_jugador})")
-
+    
     return valor_crupier, valor_jugador
 
 
@@ -101,7 +101,7 @@ while valor_jugador < 21 and not salir:
     elif pedir.lower() == "n":
         salir = True
 
-print(f"\nPuntajes finales:")
+print(f"\nPuntuación final:")
 print(f"Jugador: {valor_jugador}")
 print(f"Crupier: {valor_crupier}\n")
 comprobarGanador(valor_jugador, valor_crupier)
