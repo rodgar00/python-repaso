@@ -1,11 +1,14 @@
 import random
 
-from Carta import Carta
+class Carta:
+    def __init__(self, valor, palo, nombre):
+        self.valor = valor
+        self.palo = palo
+        self.nombre = nombre
 
-cartas = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-          1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-          1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-          1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    def __str__(self):
+        return f"{self.nombre} de {self.palo}"
+
 
 valor = {
     1: 1,
@@ -16,37 +19,41 @@ valor = {
     6: 6,
     7: 7,
     8: 10,
-    9: 10,
-    10: 10
+    9: 10,   # Caballo
+    10: 10   # Rey
 }
 
 
-"""def llenarBaraja():
+def llenarBaraja():
     baraja = []
     palos = ["espadas", "oros", "copas", "bastos"]
-    for i in range(4):
+    for palo in palos:
         for j in range(1, 11):
             if j == 1:
-                carta = Carta(1, palos[i], "As")
+                carta = Carta(1, palo, "As")
             elif j < 8:
-                carta = Carta(j, palos[i], j)
+                carta = Carta(j, palo, str(j))
             else:
                 figuras = ["Sota", "Caballo", "Rey"]
-                carta = Carta(10, palos[i], figuras[j-8])
+                carta = Carta(10, palo, figuras[j - 8])
             baraja.append(carta)
     return baraja
 
-baraja = llenarBaraja()
-for carta in baraja:
-    print(carta)
-    print(f"El valor de la carta es {carta.valor}")
-"""
-def repartirCartas():
-    carta_crupier = random.choice(cartas)
-    carta_jugador = random.choice(cartas)
 
-    valor_crupier = valor.get(carta_crupier)
-    valor_jugador = valor.get(carta_jugador)
+baraja = llenarBaraja()
+
+
+def sacarCarta(baraja):
+    indice = random.randint(0, len(baraja) - 1)
+    return baraja.pop(indice)
+
+
+def repartirCartas():
+    carta_crupier = sacarCarta(baraja)
+    carta_jugador = sacarCarta(baraja)
+
+    valor_crupier = carta_crupier.valor
+    valor_jugador = carta_jugador.valor
 
     print(f"Carta crupier: {carta_crupier} (valor: {valor_crupier})")
     print(f"Carta jugador: {carta_jugador} (valor: {valor_jugador})")
@@ -66,29 +73,35 @@ def comprobarGanador(valor_jugador, valor_crupier):
     else:
         print("Empate.")
 
+
 valor_crupier, valor_jugador = repartirCartas()
 
 while valor_crupier < 16:
     print("El crupier pide otra carta...")
-    nueva_carta = random.choice(cartas)
-    valor_crupier += valor.get(nueva_carta)
+    nueva_carta = sacarCarta(baraja)
+    valor_crupier += nueva_carta.valor
     print(f"Nueva carta crupier: {nueva_carta} (total: {valor_crupier})")
 print()
 
 salir = False
-while valor_jugador < 21 and salir == False:
+while valor_jugador < 21 and not salir:
     pedir = input("¿Quieres pedir una nueva carta? s/n -> ")
-    if pedir == "s":
+    if pedir.lower() == "s":
         print("El jugador pide otra carta...")
-        nueva_carta = random.choice(cartas)
-        valor_jugador += valor.get(nueva_carta)
-        print(f"Nueva carta jugador: {nueva_carta} (total: {valor_jugador})")
-        if nueva_carta is 1 and 11+valor_jugador > 21:
-            valor
-    elif pedir == "n":
+        nueva_carta = sacarCarta(baraja)
+        print(f"Nueva carta jugador: {nueva_carta}")
+        if nueva_carta.nombre == "As":
+            if valor_jugador + 11 > 21:
+                valor_jugador += 1
+            else:
+                valor_jugador += 11
+        else:
+            valor_jugador += nueva_carta.valor
+        print(f"Total jugador: {valor_jugador}")
+    elif pedir.lower() == "n":
         salir = True
 
-print(f"{valor_jugador} jugador, {valor_crupier} crupier")
+print(f"\nPuntajes finales:")
+print(f"Jugador: {valor_jugador}")
+print(f"Crupier: {valor_crupier}\n")
 comprobarGanador(valor_jugador, valor_crupier)
-
-
